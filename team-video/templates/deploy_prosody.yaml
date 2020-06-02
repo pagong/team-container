@@ -25,10 +25,18 @@ spec:
           - containerPort: 5347
          resources: {}
 #         restartPolicy: Always
+<<<<<<< HEAD
+=======
+         {{ if eq .Values.auth.type "internal" }}
+>>>>>>> upstream/master
          lifecycle:
            postStart:
              exec:
                command: ["/bin/bash", "-c", "sleep 60; prosodyctl --config /config/prosody.cfg.lua register {{ .Values.auth.admin.user }} {{ .Values.app.name }}.{{ .Values.app.domain }} {{ .Values.auth.admin.password }}"]
+<<<<<<< HEAD
+=======
+         {{end}}
+>>>>>>> upstream/master
          image: jitsi/prosody
          imagePullPolicy: {{ .Values.app.pullpolicy }}
          env:
